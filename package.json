@@ -27,6 +27,12 @@
   },
   "dependencies": {
     "dotenv": "^16.3.1",
-    "express": "^4.18.2"
+    "express": "^4.18.2",
+    "module-alias": "^2.2.3"
+  },
+  "_moduleAliases": {
+    "@/resources/*" : ["dist/resources/*"],
+    "@/utils/*" : ["dist/utils/*"],
+    "@/middleware/*" : ["dist/middleware/*"]
   }
 }
