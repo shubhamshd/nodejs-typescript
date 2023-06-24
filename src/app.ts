@@ -27,7 +27,7 @@ class App {
         this.express.use(cors());
         this.express.use(morgan('dev'));
         this.express.use(express.json());
-        this.express.use(express.urlencoded({ extended: false}));
+        this.express.use(express.urlencoded({ extended: false }));
         this.express.use(compression());
     }
 
@@ -35,7 +35,7 @@ class App {
         controllers.forEach((controller: Controller) => {
             this.express.use('/api', controller.router);
         });
-    } 
+    }
 
     private intialiseErrorHandling(): void {
         this.express.use(ErrorMiddleware);
@@ -43,10 +43,7 @@ class App {
 
     private intialiseDatabaseConnection(): void {
         const { MONGO_USER, MONGO_PASSWD, MONGO_PATH } = process.env;
-
-        mongoose.connect(
-            ''
-        );
+        mongoose.connect('');
     }
 
     public listen(): void {
