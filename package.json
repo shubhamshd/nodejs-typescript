@@ -6,7 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node dist/index.js",
-    "dev": "tsc-watch --onSuccess \"node ./dist/index.js\"",
+    "dev": "tsc-watch --onSuccess \"node dist/index.js\"",
     "build": "tsc",
     "postinstall": "npm run build"
   },
@@ -17,6 +17,7 @@
     "@types/compression": "^1.7.2",
     "@types/cors": "^2.8.13",
     "@types/express": "^4.17.17",
+    "@types/module-alias": "^2.0.1",
     "@types/morgan": "^1.9.4",
     "@types/node": "^20.3.1",
     "@typescript-eslint/eslint-plugin": "^5.60.0",
@@ -41,13 +42,13 @@
     "morgan": "^1.10.0"
   },
   "_moduleAliases": {
-    "@/resources/*": [
+    "@resources/*": [
       "dist/resources/*"
     ],
-    "@/utils/*": [
+    "@utils/*": [
       "dist/utils/*"
     ],
-    "@/middleware/*": [
+    "@middleware/*": [
       "dist/middleware/*"
     ]
   }
