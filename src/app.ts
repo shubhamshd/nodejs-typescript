@@ -42,8 +42,8 @@ class App {
     }
 
     private intialiseDatabaseConnection(): void {
-        const { MONGO_USER, MONGO_PASSWD, MONGO_PATH } = process.env;
-        mongoose.connect('');
+        const { MONGO_USER, MONGO_PASSWORD, MONGO_PATH } = process.env;
+        mongoose.connect(`mongodb+srv://${MONGO_USER}:${MONGO_PASSWORD}@${MONGO_PATH}`);
     }
 
     public listen(): void {
