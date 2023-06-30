@@ -1,8 +1,5 @@
 import UserModel from '@resources/user/user.model';
-import Token from '@utils/interfaces/token.interface';
 import token from '@utils/token';
-import { error } from 'console';
-import { Err } from 'joi';
 
 class UserService {
     private user = UserModel;
@@ -14,12 +11,17 @@ class UserService {
         role: string
     ): Promise<string | Error> {
         try {
-            const user = this.user.create({ name, email, password, role });
+            const user = await this.user.create({
+                name,
+                email,
+                password,
+                role,
+            });
 
             const accessToken = token.createToken(user);
             return accessToken;
-        } catch (error) {
-            throw new Error('Unabel to create user');
+        } catch (error: any) {
+            throw new Error(error.message);
         }
     }
 

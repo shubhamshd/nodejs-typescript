@@ -1,6 +1,7 @@
 import { Schema, model } from 'mongoose';
 import User from '@resources/user/user.interface';
 import bcrypt from 'bcrypt';
+import { string } from 'joi';
 
 const UserSchema = new Schema(
     {
@@ -14,9 +15,7 @@ const UserSchema = new Schema(
             unique: true,
             trim: true,
         },
-        password: {
-            type: String,
-        },
+        password: String,
         role: {
             type: String,
             required: true,
@@ -40,5 +39,5 @@ UserSchema.methods.isValidPassword = async function (
     return await bcrypt.compare(password, this.password);
 };
 
-const UserModel = model<User>('User', UserSchema);
+const UserModel = model<User>('User', UserSchema, 'users');
 export default UserModel;
