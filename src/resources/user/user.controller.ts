@@ -4,7 +4,7 @@ import HttpException from '@utils/exceptions/http.exception';
 import validationMiddleware from '@middleware/validation.middleware';
 import validate from '@resources/user/user.validation';
 import UserService from '@resources/user/user.service';
-import authenticated from '@middleware/authenticated.middleware';
+import authenticatedMiddleware from '@middleware/authenticated.middleware';
 
 class UserController implements Controller {
     public path = '/users';
@@ -26,7 +26,7 @@ class UserController implements Controller {
             validationMiddleware(validate.login),
             this.login
         );
-        this.router.get(this.path, authenticated, this.getUser);
+        this.router.get(this.path, authenticatedMiddleware, this.getUser);
     }
 
     private register = async (
