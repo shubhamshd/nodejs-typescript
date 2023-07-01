@@ -22,7 +22,7 @@ class UserController implements Controller {
             this.register
         );
         this.router.post(
-            `${this.path}/login}`,
+            `${this.path}/login`,
             validationMiddleware(validate.login),
             this.login
         );
